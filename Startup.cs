@@ -19,7 +19,7 @@ namespace Catalog
 
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddSingleton<IInMemItemsRepository, InMemItemsRepository>();
+      services.AddSingleton<IItemsRepository, IItemsRepository>();
       services.AddControllers();
       services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Catalog", Version = "v1"}); });
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\roots\\Documents\\workspace\\c-sharp\\Catalog\\Catalog.csproj": {}
+    "C:\\Users\\roots\\Documents\\workspace\\c-sharp\\CatalogApi\\Catalog.csproj": {}
   },
   "projects": {
-    "C:\\Users\\roots\\Documents\\workspace\\c-sharp\\Catalog\\Catalog.csproj": {
+    "C:\\Users\\roots\\Documents\\workspace\\c-sharp\\CatalogApi\\Catalog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\roots\\Documents\\workspace\\c-sharp\\Catalog\\Catalog.csproj",
+        "projectUniqueName": "C:\\Users\\roots\\Documents\\workspace\\c-sharp\\CatalogApi\\Catalog.csproj",
         "projectName": "Catalog",
-        "projectPath": "C:\\Users\\roots\\Documents\\workspace\\c-sharp\\Catalog\\Catalog.csproj",
+        "projectPath": "C:\\Users\\roots\\Documents\\workspace\\c-sharp\\CatalogApi\\Catalog.csproj",
         "packagesPath": "C:\\Users\\roots\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\roots\\Documents\\workspace\\c-sharp\\Catalog\\obj\\",
+        "outputPath": "C:\\Users\\roots\\Documents\\workspace\\c-sharp\\CatalogApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\roots\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.13.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
