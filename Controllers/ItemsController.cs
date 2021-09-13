@@ -12,9 +12,9 @@ namespace Catalog.Controllers
   [Route("[controller]")]
   public class ItemsController : ControllerBase
   {
-    private readonly IInMemItemsRepository _repository;
+    private readonly IItemsRepository _repository;
 
-    public ItemsController(IInMemItemsRepository repository)
+    public ItemsController(IItemsRepository repository)
     {
       _repository = repository;
     }
@@ -72,6 +72,21 @@ namespace Catalog.Controllers
       };
       
       _repository.UpdateItem(updatedItem);
+
+      return NoContent();
+    }
+
+    [HttpDelete("{id:guid}")]
+    public ActionResult DeleteItem(Guid id)
+    {
+      var existingItem = _repository.GetItem(id);
+      
+      if (existingItem is null)
+      {
+        return NotFound();
+      }
+      
+      _repository.DeleteItem(id);
 
       return NoContent();
     }
