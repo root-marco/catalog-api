@@ -1,5 +1,6 @@
+using Catalog.Api.Repositories;
+using Catalog.Api.Settings;
 using Catalog.Repositories;
-using Catalog.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,12 +27,10 @@ namespace Catalog
     {
       BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
       BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
+      services.AddHealthChecks();
       services.AddSingleton<IItemsRepository, MongoDbItemsRepository>();
       services.AddControllers();
-      services.AddSwaggerGen(c =>
-      {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalog", Version = "v1" });
-      });
+      services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Catalog", Version = "v1"}); });
       services.AddSingleton<IMongoClient>(ServiceProvider =>
       {
         var settings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
@@ -51,12 +50,11 @@ namespace Catalog
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();
+        endpoints.MapHealthChecks("/health");
       });
       app.UseSwagger();
-      app.UseSwaggerUI(c =>
-      {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog v1");
-      });
+      app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog v1"); });
+      
     }
   }
 }
